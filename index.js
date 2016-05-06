@@ -50,22 +50,22 @@ function sassGenerateContents(destFilePath, creds, options){
 	}
 
 	function createCreds(credsObj){
-		
+
 		var credStr = ['/* ============================================================ *\\\n'];
 		credStr.push('  #MAIN\n')
 		var count = 0;
 		var credLongest = getLongest(credsObj);
-		
+
 
 		for (var cred in credsObj){
 			if (credsObj.hasOwnProperty(cred)) {
-		       
+
 		       var val = credsObj[cred];
 		       var credLength = cred.length;
 		       var diff = credLongest - credLength;
 		       var spacer = getSpacer(diff, ' ');
 		       credStr.push('  ' + cred + ': ' + spacer + '' + val);
-		       
+
 		    }
 		}
 		credStr.push('\n/* ============================================================ *\\\n\n');
@@ -96,7 +96,7 @@ function sassGenerateContents(destFilePath, creds, options){
 		}
 
 
-		
+
 		// build site credentials iff passed in
 		var credsArr = createCreds(creds);
 
@@ -147,7 +147,7 @@ function sassGenerateContents(destFilePath, creds, options){
 	}
 
 	function getRelPath(p, dest){
-		
+
 		var p = relPath(p),
 			d = getBase(relPath(dest));
 		p = path.relative(d, p);
@@ -181,8 +181,8 @@ function sassGenerateContents(destFilePath, creds, options){
 			return;
 		}
 
-		var content = file.contents.toString('utf8'),
-			relPath = file.path.replace(file.cwd,'');
+		var content = file.contents.toString('utf8');
+		var relPath = file.path;
 
 		comments = content.split('\n')[0];
 		var firstChars = comments.charAt(0) + comments.charAt(1);
